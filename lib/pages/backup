@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+
+class FuelFormContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Cost"),
+        ),
+        body: Container(padding: EdgeInsets.all(15.0), child: FuelForm()));
+  }
+}
+
+class FuelForm extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _FuelFormState();
+  }
+}
+
+class _FuelFormState extends State<FuelForm> {
+  String distance = "a";
+
+  @override
+  Widget build(BuildContext context) {
+    TextStyle txs = Theme.of(context).textTheme.headline6;
+    TextEditingController distanceFieldCtrl = TextEditingController();
+    return Column(
+      children: [
+        TextField(
+          controller: distanceFieldCtrl,
+          decoration: InputDecoration(
+              labelText: "Distance",
+              hintText: "e.g : 124",
+              labelStyle: txs,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))),
+          keyboardType: TextInputType.number,
+        ),
+        RaisedButton(
+            color: Theme.of(context).primaryColorDark,
+            textColor: Theme.of(context).primaryColorLight,
+            child: Text("Submit"),
+            onPressed: () {
+              setState(() {
+                // distance = distanceFieldCtrl.text;
+              });
+            }),
+        Text(distance)
+      ],
+    );
+  }
+}
